@@ -1,7 +1,7 @@
 /*
  * jsSocket: generic javascript socket API
  *   (c) 2008 Aman Gupta (tmm1)
- * 
+ *
  *   http://github.com/tmm1/jsSocket
 */
 
@@ -128,7 +128,7 @@ jsSocket.prototype = {
   },
   reconnect_interval: null,
   reconnect_countdown: 3,
-  
+
   // wrappers for flash functions
 
   // open/connect the socket
@@ -142,7 +142,7 @@ jsSocket.prototype = {
       this.log('error: no port specified')
 
     this.onStatus('connecting')
-      
+
     return this.sock.open(this.host, this.port);
   },
   connect: function(){ this.open.apply(this, arguments) },
@@ -189,7 +189,7 @@ jsSocket.prototype = {
     if (this.logger)
       this.logger.apply(null, [[this.id].concat(args)])
   },
-  
+
   // flash callback
 
   callback: function(type, data) {
@@ -253,7 +253,7 @@ jsSocket.prototype = {
       self[type](data)
     }, 0)
   },
-  
+
   // callback hooks
 
   onLoaded: function(){},
