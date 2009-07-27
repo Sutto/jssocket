@@ -80,8 +80,7 @@ EM.run{
               %form#input
                 %input{ :type => 'text' }/
 
-              %script{ :type => 'text/javascript', :src => '/js/jquery-latest.min.js' }= ''
-              %script{ :type => 'text/javascript', :src => '/js/jquery.media.js' }= ''
+              %script{ :type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js' }= ''
               %script{ :type => 'text/javascript', :src => '/js/jsonStringify.js' }= ''
               %script{ :type => 'text/javascript', :src => '/js/jsSocket.js' }= ''
 

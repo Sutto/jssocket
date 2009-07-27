@@ -11,7 +11,7 @@ WHAT IS IT
 
 REQUIREMENTS
   
-  jquery, jquery.media, jsonStringify and jsSocket.swf
+  jsonStringify and jsSocket.swf
   mtasc (http://mtasc.org) or haxe (http://haxe.org) to re-compile the swfs from source
 
 
