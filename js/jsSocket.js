@@ -44,8 +44,8 @@ jsSocket.prototype = {
     var self = this
 
     // update options
-    if (opts)
-      $.extend(self, opts)
+    for (key in opts)
+      self[key] = opts[key]
 
     // don't autoconnect unless port is defined
     if (!self.port)
@@ -64,22 +64,18 @@ jsSocket.prototype = {
     jsSocket.sockets[self.id] = self
 
     // install flash socket
-    $(function(){
-      self.wrapper = $('<div />').attr('id', 'jsSocketWrapper_'+self.num)
-                                 .css('position', 'absolute')
-                                 .appendTo('body')
-                                 .media({ src: jsSocket.swf,
-                                          attrs: { id: self.id },
-                                          width: 1,
-                                          height: 1,
-                                          params: { id: self.id },
-                                          flashvars: { id: self.id, sizedReads: self.sizedReads }
-                                       })
+    window.onload = function() {
+      var flashvars = "id=" + self.id + "&sizedReads=" + self.sizedReads
+      var wrapper = document.createElement('div')
+      wrapper.id = 'jsSocketWrapper_' + self.num
+      wrapper.style.position = 'absolute'
+      wrapper.innerHTML = '<embed id="' + self.id + '" width="1" height="1" flashvars="' + flashvars + '" autoplay="false" wmode="transparent" bgcolor="#ffffff" pluginspage="http://www.adobe.com/go/getflashplayer" type="application/x-shockwave-flash" src="' + jsSocket.swf + '" style="display: block;"/>'
+      document.body.appendChild(wrapper)
+    }
 
-      $(window).bind('beforeunload', function(){
-        self.close()
-      })
-    })
+    window.onbeforeunload = function() {
+      self.close()
+    }
   },
 
 
@@ -168,17 +164,18 @@ jsSocket.prototype = {
       this.sock.close()
   },
   disconnect: function(){ this.close.apply(this) },
-  
+
   // uninstall the socket
   remove: function() {
     delete jsSocket.sockets[this.id]
     if (this.loaded && this.connected)
       this.sock.close()
-    $('#jsSocketWrapper_'+this.num).remove();
+    var wrapper = document.getElementById('jsSocketWrapper_'+this.num)
+    wrapper.parentNode.removeChild(wrapper)
   },
-  
+
   // debugging
-  
+
   log: function(){
     if (!this.debug) return;
 
