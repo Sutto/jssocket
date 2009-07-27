@@ -150,8 +150,12 @@ jsSocket.prototype = {
   // send/write data to the socket
   // if argument is an object, it will be json-ified
   send: function(data) {
-    if (typeof data == "object")
-      data = JSONstring.make(data)
+    if (typeof data == "object") {
+      if ('JSONstring' in window)
+        data = JSONstring.make(data)
+      else if ('JSON' in window)
+        data = JSON.stringify(data)
+    }
 
     return this.sock.send(data);
   },
