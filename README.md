@@ -1,8 +1,8 @@
 # JSSocket - Flash + Javascript for sweet, sockety love.
 
-Fork of [Amun Gupta's jsSocket](http://github.com/tmm1/jssocket) with a rewritten
+Fork of [Aman Gupta's jsSocket](http://github.com/tmm1/jssocket) with a rewritten
 javascript library and simplified flash / haxe socket implementation. As such,
-lib/JSSocket.hx is (c) Amun Gupta (tmm1) 2008.
+lib/JSSocket.hx is (c) Aman Gupta (tmm1) 2008.
 
 It's like WebSockets but simpler. Use it as you would basic async sockets available
 in most different programming languages.
