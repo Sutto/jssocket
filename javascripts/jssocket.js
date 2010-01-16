@@ -87,7 +87,7 @@ var JSSocket;
       // Now, create the element and append.
       var flashvars  = {'id': this.id};
       var attributes = {'style': 'display: block;', 'id': this.id};
-      var params     = {'wmode': 'transparent', 'bgcolor': '#ffffff'};
+      var params     = {'wmode': 'transparent', 'bgcolor': '#ffffff', 'allowscriptaccess': 'always'};
       // Finally append the element.
       var self = this;
       JSS.debug("Preparing to embed the swf file");
