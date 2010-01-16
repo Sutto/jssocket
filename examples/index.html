@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>JSSocket Example</title>
+    <script type="text/javascript" src="./javascripts/jssocket.js"></script>
+    <script type="text/javascript">
+      swfobject.addLoadEvent(function() {
+        JSSocket.enableDebug = true;
+        JSSocket.swf = "./flash/jssocket.swf"
+        JSSocket.connect("localhost", 1234, function(s) {
+          s.onLoad(function() {
+            s.open();
+          });
+          s.onOpen(function() {
+            s.send("Hello!");
+          })
+          s.onData(function(d) {
+            console.log("Got: ", d)
+          });
+        });
+        
+      });
+    </script>
+  </head>
+  <body>
+    <h1>JSSocket Example</h1>
+  </body>
+</html>
